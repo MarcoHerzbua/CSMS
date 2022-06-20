@@ -10,9 +10,9 @@ namespace CSMS.Models
         public CSRateRequest()
         {
             Rate = new Rate();
-            ChargeDetailRecord = new ChargeDetailRecord();
+            Cdr = new ChargeDetailRecord();
         }
         public Rate Rate { get; set; }
-        public ChargeDetailRecord ChargeDetailRecord { get; set; }
+        public ChargeDetailRecord Cdr { get; set; }
     }
 }

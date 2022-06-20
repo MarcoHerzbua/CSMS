@@ -13,20 +13,13 @@ namespace CSMS.Controllers
     public class CSProcessController : ControllerBase
     {
 
-        //private readonly ILogger<CSProcessController> _logger;
-
-        //public CSProcessController(ILogger<CSProcessController> logger)
-        //{
-        //    _logger = logger;
-        //}
-
         [HttpPost("rate")]
         public ActionResult<CSRateResponse> ProcessRate(CSRateRequest request)
         {
             CSRateResponse response = new CSRateResponse();
             response.Overall = 0.0f;
 
-            ChargeDetailRecord cdr = request.ChargeDetailRecord;
+            ChargeDetailRecord cdr = request.Cdr;
             Rate rate = request.Rate;
 
             //calculate overall energy consumption in kwh and add to response
@@ -36,7 +29,7 @@ namespace CSMS.Controllers
             response.Components.Energy = (float)Math.Round(energyPrice, 3);
             response.Overall += response.Components.Energy;
 
-            //calculate overall charge time
+            //calculate overall charge time and add to response
             TimeSpan chargeTimespan = GetChargeTime(cdr);
             double chargeTimePrice = chargeTimespan.TotalHours * rate.Time;
             response.Components.Time = (float)Math.Round(chargeTimePrice, 3);
