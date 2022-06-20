@@ -7,6 +7,11 @@ namespace CSMS.Models
 {
     public class CSRateResponse
     {
+        public CSRateResponse()
+        {
+            Overall = 0.0f;
+            Components = new Rate();
+        }
         public float Overall { get; set; }
         public Rate Components { get; set; }
     }
