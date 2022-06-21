@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace CSMS.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class CSProcessController : ControllerBase
     {
 
