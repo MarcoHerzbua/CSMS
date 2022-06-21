@@ -11,8 +11,11 @@ Techstack: ASP.Net Core 6.0, Visual Studio 2022, Swashbuckle.AspNetCore
 - .zip file with executable web api
 
 ### How to Test
+- **Needs ASP.Net Core runtime to be installed on your system**
+
+Download: https://dotnet.microsoft.com/en-us/download/dotnet/thank-you/runtime-aspnetcore-6.0.6-windows-hosting-bundle-installer
 - Run CSMS.exe
-- Open "https://localhost:5001/swagger" in browser
+- Open "http://localhost:5000/swagger" or "https://localhost:5001/swagger" in browser
 - Use Swagger UI to test "CSProcess/rate" with JSON input
 
 ```
