@@ -45,6 +45,11 @@ namespace CSMS.Controllers
             return response;
         }
 
+        //basic error-handling, sends default error message when exception occurs
+        [Route("/error")]
+        [ApiExplorerSettings(IgnoreApi = true)]
+        public IActionResult HandleError() => Problem();
+
         private TimeSpan GetChargeTime(ChargeDetailRecord cdr)
         {
             TimeSpan chargeTime = new TimeSpan();
@@ -60,9 +65,9 @@ namespace CSMS.Controllers
         //TODO: add more checks to validate timestamp string
         private DateTime ParseTimestamp(string timeStamp)
         {
-            if(timeStamp[10] != 'T' || timeStamp[19] != 'Z')
+            if(timeStamp.Length != 20 || timeStamp[10] != 'T' || timeStamp[19] != 'Z')
             {
-                throw new Exception("Timestamp wrong Format");
+                throw new FormatException("timestamps not in correct format");
             }
 
             int year = int.Parse(timeStamp.Substring(0, 4));
